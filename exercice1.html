@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 1</title>
+</head>
+<body>
+<h1>Générateur de mot de passe</h1>
+<p></p>
+<button onclick="generatePassword()">Try it</button>
+
+<p id="password"></p>
+
+</body>
+</html>
+<script>
+    var password = document.getElementById('password');
+
+    // Fonction générant un mot de passe aléatoire de 12 caractères
+    function generatePassword() {
+        //Permet de générer 3 caractères majuscules aléatoires
+        function generateRandomUpperChars() {
+            var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var randomUpperChars = '';
+            for (var i = 0; i < 3; i++) {
+                randomUpperChars += upperChars.charAt(Math.floor(Math.random() *
+                    upperChars.length));
+            }
+            return randomUpperChars
+        }
+
+        //Permet de générer 4 caractères minuscules aléatoires
+        function generateRandomLowerChars() {
+            var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+            var randomLowerChars = '';
+            for (var i = 0; i < 4; i++) {
+                randomLowerChars += lowerChars.charAt(Math.floor(Math.random() *
+                    lowerChars.length));
+            }
+            return randomLowerChars
+        }
+
+        //Permet de générer 2 caractères spéciaux aléatoires
+        function generateRandomSpecialChars() {
+            var specialChars = "`~!@#$%^&*()-_=+[{]}|;:',<.>/? ";
+            var randomSpecialChars = '';
+            for (var i = 0; i < 2; i++) {
+                randomSpecialChars += specialChars.charAt(Math.floor(Math.random() *
+                    specialChars.length));
+            }
+            return randomSpecialChars
+        }
+
+        //Permet de générer 2 chiffres aléatoires
+        function generateRandomNumber() {
+            var number = "0123456789";
+            var randomNumber = '';
+            for (var i = 0; i < 2; i++) {
+                randomNumber += number.charAt(Math.floor(Math.random() *
+                    number.length));
+            }
+            return randomNumber
+        }
+        //Permet de générer aléatoirement les caractères précédement tirés au sort
+        var res = generateRandomUpperChars() + generateRandomSpecialChars() + generateRandomLowerChars() + generateRandomNumber();
+        randomPassword = '';
+        for (var i = 0; i < 12; i++) {
+            randomPassword += res.charAt(Math.floor(Math.random() *
+                res.length));
+        }
+        password.innerHTML = randomPassword;
+        console.log(randomPassword)
+        return randomPassword;
+    }
+</script>
